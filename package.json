@@ -1,5 +1,5 @@
 {
-  "name": "tsx-morph",
+  "name": "ts-morph-react",
   "version": "1.0.0",
   "description": "A collection of transformers for ts-morph to refactor react code",
   "license": "MIT",

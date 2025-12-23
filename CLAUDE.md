@@ -1,8 +1,8 @@
-# tsx-morph Project Guide
+# ts-morph-react Project Guide
 
 ## Project Overview
 
-**tsx-morph** is a collection of transformers for [ts-morph](https://ts-morph.com/) to refactor React code. It provides utilities and transformers that automate code modifications for React TypeScript codebases.
+**ts-morph-react** is a collection of transformers for [ts-morph](https://ts-morph.com/) to refactor React code. It provides utilities and transformers that automate code modifications for React TypeScript codebases.
 
 ## Key Technologies
 

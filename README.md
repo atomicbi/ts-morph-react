@@ -1,7 +1,7 @@
-# tsx-morph
+# ts-morph-react
 
-[![npm version](https://img.shields.io/npm/v/tsx-morph.svg)](https://www.npmjs.com/package/tsx-morph)
-[![npm downloads](https://img.shields.io/npm/dm/tsx-morph.svg)](https://www.npmjs.com/package/tsx-morph)
+[![npm version](https://img.shields.io/npm/v/ts-morph-react.svg)](https://www.npmjs.com/package/ts-morph-react)
+[![npm downloads](https://img.shields.io/npm/dm/ts-morph-react.svg)](https://www.npmjs.com/package/ts-morph-react)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 A powerful collection of **AST transformers for ts-morph** to automate React code refactoring. Enforce consistent code patterns, modernize your codebase, and enforce best practices with declarative, composable transformers.
@@ -19,11 +19,11 @@ A powerful collection of **AST transformers for ts-morph** to automate React cod
 ## Installation
 
 ```bash
-npm install tsx-morph
+npm install ts-morph-react
 # or
-pnpm add tsx-morph
+pnpm add ts-morph-react
 # or
-yarn add tsx-morph
+yarn add ts-morph-react
 ```
 
 ## Quick Start
@@ -32,7 +32,7 @@ yarn add tsx-morph
 
 ```typescript
 import { Project } from 'ts-morph'
-import { transform } from 'tsx-morph'
+import { transform } from 'ts-morph-react'
 
 const project = new Project()
 const sourceFile = project.addSourceFileAtPath('src/Button.tsx')
@@ -117,7 +117,7 @@ Formats code and organizes imports according to your style guide. Respects all s
 
 **Usage:**
 ```tsx
-import { transform } from 'tsx-morph'
+import { transform } from 'ts-morph-react'
 
 await transform(sourceFile, {
   enforceFormat: true,
@@ -238,7 +238,7 @@ pnpm test -- -u
 pnpm test enforceFormat
 ```
 
-## When to Use tsx-morph
+## When to Use ts-morph-react
 
 ✅ **Good for:**
 - Enforcing code patterns across your codebase
@@ -254,7 +254,7 @@ pnpm test enforceFormat
 
 ## Under the Hood
 
-tsx-morph is built on top of [ts-morph](https://ts-morph.com/), a fantastic library that provides a fluent API for manipulating TypeScript ASTs. If you need lower-level control, you can access the ts-morph APIs directly.
+ts-morph-react is built on top of [ts-morph](https://ts-morph.com/), a fantastic library that provides a fluent API for manipulating TypeScript ASTs. If you need lower-level control, you can access the ts-morph APIs directly.
 
 ## Contributing
 
