@@ -11,9 +11,7 @@
     "type": "git",
     "url": "git+ssh://git@github.com/atomicbi/ts-morph-react.git"
   },
-  "files": [
-    "dist"
-  ],
+  "files": ["dist"],
   "type": "module",
   "exports": {
     ".": {
@@ -21,7 +19,6 @@
       "default": "./dist/index.js"
     }
   },
-  "bin": "./dist/cli.js",
   "scripts": {
     "clean": "rimraf dist",
     "build": "tsup",

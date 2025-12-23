@@ -7,7 +7,6 @@ export interface TransformerConfig {
   enforceNamedImports: boolean
   enforceFormat: boolean
   format: FormatCodeSettings
-
 }
 
 export function mergeConfig({ format, ...config }: PartialDeep<TransformerConfig> = {}): TransformerConfig {
