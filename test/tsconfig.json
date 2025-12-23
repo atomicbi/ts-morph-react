@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "noEmit": false,
+    "strict": false,
+    "noImplicitAny": false,
+    "checkJs": false,
+    "composite": true,
+    "skipLibCheck": true,
+    "isolatedModules": false,
+    "jsx": "preserve",
+    "paths": { "@/*": ["./shared/*"] },
+  },
+  "include": ["**/*.ts", "**/*.tsx", "../src/index.ts"],
+  "exclude": ["node_modules"]
+}
