@@ -1,6 +1,6 @@
 {
   "name": "ts-morph-react",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A collection of transformers for ts-morph to refactor react code",
   "license": "MIT",
   "author": {
@@ -13,6 +13,8 @@
   },
   "files": ["dist"],
   "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
