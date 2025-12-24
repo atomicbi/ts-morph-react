@@ -5,11 +5,12 @@ import { Transformer } from '../utils/transformer'
 export const enforceFunctionComponent: Transformer = {
   match: ({ config }) => config.enforceFunctionComponent,
   transform: async ({ sourceFile, config: { enforceDirectExports } }) => {
-    const requireImportCheck = sourceFile.getFunctions().some((func) => {
-      if (!isFunctionComponent(func)) { return false }
+    let requireImportCheck = false
+    sourceFile.getFunctions().forEach((func) => {
+      if (!isFunctionComponent(func)) { return }
 
       const funcName = func.getName()
-      if (!funcName) { return false }
+      if (!funcName) { return }
 
       const isExportedViaKeyword = func.isExported()
       let isExportedViaSeparateStatement = false
@@ -50,7 +51,7 @@ export const enforceFunctionComponent: Transformer = {
         isExported
       })
       func.remove()
-      return true
+      requireImportCheck = true
     })
 
     if (requireImportCheck) {
