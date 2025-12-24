@@ -4,6 +4,7 @@ import { enforceDirectExports } from '../transformers/enforceDirectExports'
 import { enforceEslint } from '../transformers/enforceEslint'
 import { enforceFormat } from '../transformers/enforceFormat'
 import { enforceFunctionComponent } from '../transformers/enforceFunctionComponent'
+import { enforceLineSeparation } from '../transformers/enforceLineSeparation'
 import { enforceNamedImports } from '../transformers/enforceNamedImports'
 import { enforcePrettier } from '../transformers/enforcePrettier'
 import { mergeConfig, TransformerConfig } from './config'
@@ -14,8 +15,9 @@ export const transformers = [
   enforceFunctionComponent,
   enforceNamedImports,
   enforceFormat,
-  enforceEslint,
-  enforcePrettier
+  enforcePrettier,
+  enforceLineSeparation,
+  enforceEslint
 ]
 
 export async function transform(

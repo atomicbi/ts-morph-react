@@ -1,15 +1,20 @@
 import { describe, expect, it } from 'vitest'
 import { snapshotPath, transformFixture } from './helpers'
 
+const formatOptions = {
+  enforceFormat: true,
+  enforcePrettier: true,
+  enforceEslint: true,
+  enforceLineSeparation: true
+}
+
 describe('transformers', () => {
   it('enforceDirectExports', async () => {
     const result = await transformFixture('Example.tsx', {
       enforceDirectExports: true,
       enforceFunctionComponent: false,
       enforceNamedImports: false,
-      enforceFormat: true,
-      enforceEslint: true,
-      enforcePrettier: true
+      ...formatOptions
     })
     await expect(result).toMatchFileSnapshot(snapshotPath('enforceDirectExports'))
   })
@@ -19,9 +24,7 @@ describe('transformers', () => {
       enforceDirectExports: false,
       enforceFunctionComponent: true,
       enforceNamedImports: false,
-      enforceFormat: true,
-      enforceEslint: true,
-      enforcePrettier: true
+      ...formatOptions
     })
     await expect(result).toMatchFileSnapshot(snapshotPath('enforceFunctionComponent'))
   })
@@ -31,9 +34,7 @@ describe('transformers', () => {
       enforceDirectExports: false,
       enforceFunctionComponent: false,
       enforceNamedImports: true,
-      enforceFormat: true,
-      enforceEslint: true,
-      enforcePrettier: true
+      ...formatOptions
     })
     await expect(result).toMatchFileSnapshot(snapshotPath('enforceNamedImports'))
   })
@@ -43,9 +44,7 @@ describe('transformers', () => {
       enforceDirectExports: false,
       enforceFunctionComponent: false,
       enforceNamedImports: false,
-      enforceFormat: true,
-      enforceEslint: true,
-      enforcePrettier: true
+      ...formatOptions
     })
     await expect(result).toMatchFileSnapshot(snapshotPath('enforceFormat'))
   })
@@ -55,9 +54,7 @@ describe('transformers', () => {
       enforceDirectExports: true,
       enforceFunctionComponent: true,
       enforceNamedImports: true,
-      enforceFormat: true,
-      enforceEslint: true,
-      enforcePrettier: true
+      ...formatOptions
     })
     await expect(result).toMatchFileSnapshot(snapshotPath('combined'))
   })

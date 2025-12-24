@@ -11,7 +11,7 @@ A powerful collection of **AST transformers for ts-morph** to automate React cod
 - 🔄 **Enforce Direct Exports** - Convert separate export statements to direct exports on function declarations
 - 🎯 **Function Components** - Automatically convert function declarations to arrow function components with proper typing
 - 📦 **Named Imports** - Transform default imports to named imports for consistency
-- 🎨 **Code Formatting** - Format code and organize imports according to your style guide
+- 🎨 **Code Formatting** - Format code and organize imports according to your style guide (using ESLint, Prettier or Typescript Language Featues)
 - ⚡ **Composable** - Mix and match transformers to create your refactoring pipeline
 - 🛡️ **Type-Safe** - Built with TypeScript for a fully typed experience
 - 🎭 **AST-Powered** - Leverage ts-morph for precise, reliable code transformations
@@ -42,7 +42,10 @@ await transform(sourceFile, {
   enforceDirectExports: true,
   enforceFunctionComponent: true,
   enforceNamedImports: true,
-  enforceFormat: true
+  enforceFormat: true,
+  enforcePrettier: true,
+  enforceEslint: true,
+  enforceLineSeparation: true
 })
 
 // Save changes
@@ -111,9 +114,9 @@ export const Button: FunctionComponent<ButtonProps> = ({ label }) => {
 }
 ```
 
-### enforceFormat
+### enforceEslint / enforcePrettier / enforceFormat
 
-Formats code and organizes imports according to your style guide. Respects all standard TypeScript formatting options.
+Formats code and organizes imports according to your style guide. Respects all standard TypeScript formatting options, eslint rules and prettier options.
 
 **Usage:**
 ```tsx
@@ -121,10 +124,20 @@ import { transform } from 'ts-morph-react'
 
 await transform(sourceFile, {
   enforceFormat: true,
+  enforcePrettier: true,
+  enforceEslint: true,
+  enforceLineSeparation: true,
   format: {
     indentSize: 2,
     convertTabsToSpaces: true,
     semicolons: ts.SemicolonPreference.Remove
+  },
+  eslint: {
+    '@stylistic/quotes': ['error', 'single']
+  },
+  prettier: {
+    semi: false,
+    singleQuote: true
   }
 })
 ```
@@ -133,10 +146,12 @@ await transform(sourceFile, {
 ```tsx
 import * as React from 'react';
 
-import { Text } from '@/components/Text'
+import { Text } from '@/components/Text';
 
-export const Button: React.FunctionComponent<ButtonProps> = ({ label }) => {
-    return <button><Text>{label}</Text></button>;
+export const Button: React.FunctionComponent<ButtonProps> = ({
+  label
+}) => {
+  return <button><Text>{label}</Text></button>;
 };
 ```
 
@@ -162,6 +177,9 @@ interface TransformerConfig {
   enforceFunctionComponent: boolean
   enforceNamedImports: boolean
   enforceFormat: boolean
+  enforceLineSeparation: boolean
+  enforceEslint: boolean
+  enforcePrettier: boolean
   format: {
     baseIndentSize: number
     convertTabsToSpaces: boolean
@@ -191,6 +209,19 @@ interface TransformerConfig {
     semicolons: SemicolonPreference
     tabSize: number
     trimTrailingWhitespace: boolean
+  },
+  eslint: {
+    '@stylistic/*': ['error'],
+    '@typescript-eslint/*': ['error']
+  },
+  prettier: {
+    semi: false,
+    singleQuote: true,
+    jsxSingleQuote: true,
+    arrowParens: 'always',
+    bracketSameLine: true,
+    objectWrap: 'collapse',
+    printWidth: 120
   }
 }
 ```

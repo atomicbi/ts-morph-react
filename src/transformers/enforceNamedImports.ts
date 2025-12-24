@@ -10,13 +10,6 @@ export const enforceNamedImports: Transformer = {
       return importDeclaration.getModuleSpecifier().getLiteralValue() === 'react'
     })
 
-    // If no React import exists, no transformation needed
-    if (!reactImport) { return }
-
-    // Check if it's already using named imports only (early exit if enforceNamedImports is disabled)
-    const namespaceImport = reactImport.getNamespaceImport()
-    if (!namespaceImport) { return }
-
     // Initialize tracking sets
     const typeImportsNeeded = new Set<string>()
     const valueImportsNeeded = new Set<string>()
@@ -79,17 +72,14 @@ export const enforceNamedImports: Transformer = {
     // ============================================================
 
     // Only add named imports and remove namespace if we have imports to add
-    if (typeImportsNeeded.size > 0 || valueImportsNeeded.size > 0) {
+    if (reactImport && (typeImportsNeeded.size > 0 || valueImportsNeeded.size > 0)) {
       // Remove namespace import FIRST (before adding named imports)
       reactImport.removeNamespaceImport()
 
       // Add type imports (with 'type' keyword for type-only imports)
       const typeImportsArray = Array.from(typeImportsNeeded).sort()
       for (const typeName of typeImportsArray) {
-        reactImport.addNamedImport({
-          name: typeName,
-          isTypeOnly: true
-        })
+        reactImport.addNamedImport({ name: typeName, isTypeOnly: true })
       }
 
       // Add value imports

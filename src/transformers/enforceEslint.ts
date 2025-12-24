@@ -22,7 +22,10 @@ export const enforceEslint: Transformer = {
           parserOptions: { ecmaFeatures: { jsx: true } }
         },
         files: ['**/*.{ts,tsx,js,jsx}'],
-        plugins: { '@stylistic': stylistic },
+        plugins: {
+          '@stylistic': stylistic,
+          '@typescript-eslint': tseslint.plugin
+        },
         rules: config.eslint
       }]
     })
