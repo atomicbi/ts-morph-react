@@ -14,9 +14,9 @@ export const transformers = [
   enforceDirectExports,
   enforceFunctionComponent,
   enforceNamedImports,
+  enforceLineSeparation,
   enforceFormat,
   enforcePrettier,
-  enforceLineSeparation,
   enforceEslint
 ]
 

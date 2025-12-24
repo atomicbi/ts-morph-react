@@ -34,8 +34,8 @@ const buttonVariants = cva(
 )
 export const Button: React.FunctionComponent<ButtonPrimitive.Props & VariantProps<typeof buttonVariants>> = ({
   className,
-  variant = 'default',
-  size = 'default',
+  variant,
+  size,
   ...props
 }) => {
   return <ButtonPrimitive data-slot='button' className={cn(buttonVariants({ variant, size, className }))} {...props} />

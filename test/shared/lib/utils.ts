@@ -1,3 +1,4 @@
-export function cn(...value: string[]) {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export function cn(...value: any[]) {
   return value.join(' ')
 }

@@ -6,7 +6,7 @@
     "name": "vitest",
     "skipFiles": ["<node_internals>/**", "build/**"],
     "program": "${workspaceFolder}/node_modules/vitest/dist/cli.js",
-    "args": ["run", "--update"],
+    "args": ["run", "-t", "combined", "--update"],
     "console": "internalConsole",
     "outputCapture": "std"
   }]
