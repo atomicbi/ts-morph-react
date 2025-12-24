@@ -1,27 +1,16 @@
 'use client'
 
+import { cn } from '@/lib/utils'
+import { Button as ButtonPrimitive } from '@base-ui/react/button'
 import * as React from 'react'
 
-import { cn } from '@/lib/utils'
-
-import { Button as ButtonPrimitive } from '@base-ui/react/button'
-interface ExampleContextProps {
-  content: string
-}
-
-const ExampleContext = React.createContext<ExampleContextProps | null>(null)
-
-export function ExampleProvider({ value, ...props }: React.PropsWithChildren<{ value: ExampleContextProps }>) {
-  return (
-    <ExampleContext.Provider value={value} >
-      {props.children}
-    </ExampleContext.Provider>
-  )
+export function ExampleProvider({ ...props }: { children?: React.ReactNode }) {
+  return <div>{props.children}</div>
 }
 
 export function Example({ content, className, ...props }: ButtonPrimitive.Props & { content: string }) {
   return (
-    <ExampleProvider value={{ content }}>
+    <ExampleProvider>
       <ButtonPrimitive className={cn('p-2', className)} {...props} />
     </ExampleProvider>
   )

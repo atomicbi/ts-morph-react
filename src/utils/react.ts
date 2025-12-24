@@ -1,6 +1,5 @@
 import { FunctionDeclaration, Node, SyntaxKind, VariableDeclaration } from 'ts-morph'
 
-// React types that should be imported as named imports
 export const REACT_TYPES = [
   'ComponentProps',
   'ComponentPropsWithRef',
@@ -20,7 +19,6 @@ export const REACT_TYPES = [
   'PropsWithRef'
 ]
 
-// React hooks that should be imported as named imports
 export const REACT_HOOKS = [
   'useState',
   'useEffect',
@@ -38,7 +36,6 @@ export const REACT_HOOKS = [
   'useSyncExternalStore'
 ]
 
-// React APIs that should be imported as named imports
 export const REACT_APIS = [
   'forwardRef',
   'memo',
@@ -53,7 +50,6 @@ export const REACT_APIS = [
   'Suspense'
 ]
 
-// Helper to detect if a variable declaration is a React component
 export function isReactComponent(varDecl: VariableDeclaration): boolean {
   try {
     const initializer = varDecl.getInitializer?.()
@@ -81,7 +77,6 @@ export function isReactComponent(varDecl: VariableDeclaration): boolean {
   }
 }
 
-// Helper to check if a variable is a forwardRef component
 export function isForwardRefComponent(varDecl: VariableDeclaration): boolean {
   try {
     const initializer = varDecl.getInitializer?.()
@@ -94,7 +89,6 @@ export function isForwardRefComponent(varDecl: VariableDeclaration): boolean {
   }
 }
 
-// Helper to check if a function is a React component (returns JSX)
 export function isFunctionComponent(func: FunctionDeclaration): boolean {
   try {
     const descendants = func.getDescendantsOfKind?.(SyntaxKind.JsxElement) || []

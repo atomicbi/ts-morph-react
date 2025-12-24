@@ -6,6 +6,8 @@
     "source.fixAll.eslint": "explicit",
     "source.organizeImports": "explicit"
   },
+  "[typecript]": { "editor.defaultFormatter": "dbaeumer.vscode-eslint" },
+  "[typescriptreact]": { "editor.defaultFormatter": "dbaeumer.vscode-eslint" },
   "search.useIgnoreFiles": true,
   "editor.formatOnSave": true,
   "editor.rulers": [80],

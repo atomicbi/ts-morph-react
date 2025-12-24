@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { snapshotPath, transformFixture } from '../helpers'
+import { snapshotPath, transformFixture } from './helpers'
 
 describe('transformers', () => {
   it('enforceDirectExports', async () => {
@@ -7,7 +7,9 @@ describe('transformers', () => {
       enforceDirectExports: true,
       enforceFunctionComponent: false,
       enforceNamedImports: false,
-      enforceFormat: false
+      enforceFormat: true,
+      enforceEslint: true,
+      enforcePrettier: true
     })
     await expect(result).toMatchFileSnapshot(snapshotPath('enforceDirectExports'))
   })
@@ -17,7 +19,9 @@ describe('transformers', () => {
       enforceDirectExports: false,
       enforceFunctionComponent: true,
       enforceNamedImports: false,
-      enforceFormat: false
+      enforceFormat: true,
+      enforceEslint: true,
+      enforcePrettier: true
     })
     await expect(result).toMatchFileSnapshot(snapshotPath('enforceFunctionComponent'))
   })
@@ -27,7 +31,9 @@ describe('transformers', () => {
       enforceDirectExports: false,
       enforceFunctionComponent: false,
       enforceNamedImports: true,
-      enforceFormat: false
+      enforceFormat: true,
+      enforceEslint: true,
+      enforcePrettier: true
     })
     await expect(result).toMatchFileSnapshot(snapshotPath('enforceNamedImports'))
   })
@@ -37,7 +43,9 @@ describe('transformers', () => {
       enforceDirectExports: false,
       enforceFunctionComponent: false,
       enforceNamedImports: false,
-      enforceFormat: true
+      enforceFormat: true,
+      enforceEslint: true,
+      enforcePrettier: true
     })
     await expect(result).toMatchFileSnapshot(snapshotPath('enforceFormat'))
   })
@@ -47,7 +55,9 @@ describe('transformers', () => {
       enforceDirectExports: true,
       enforceFunctionComponent: true,
       enforceNamedImports: true,
-      enforceFormat: true
+      enforceFormat: true,
+      enforceEslint: true,
+      enforcePrettier: true
     })
     await expect(result).toMatchFileSnapshot(snapshotPath('combined'))
   })

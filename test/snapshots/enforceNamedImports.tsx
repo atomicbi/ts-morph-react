@@ -1,27 +1,16 @@
 'use client'
 
-import { type PropsWithChildren, createContext } from 'react'
-
 import { cn } from '@/lib/utils'
-
 import { Button as ButtonPrimitive } from '@base-ui/react/button'
-interface ExampleContextProps {
-  content: string
-}
+import { type ReactNode } from 'react'
 
-const ExampleContext = createContext<ExampleContextProps | null>(null)
-
-function ExampleProvider({ value, ...props }: PropsWithChildren<{ value: ExampleContextProps }>) {
-  return (
-    <ExampleContext.Provider value={value} >
-      {props.children}
-    </ExampleContext.Provider>
-  )
+function ExampleProvider({ ...props }: { children?: ReactNode }) {
+  return <div>{props.children}</div>
 }
 
 function Example({ content, className, ...props }: ButtonPrimitive.Props & { content: string }) {
   return (
-    <ExampleProvider value={{ content }}>
+    <ExampleProvider>
       <ButtonPrimitive className={cn('p-2', className)} {...props} />
     </ExampleProvider>
   )

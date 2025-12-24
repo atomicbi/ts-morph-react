@@ -4,12 +4,12 @@ import { enforeLineSeparation, SeparationIntent } from '../utils/trivia'
 
 export const enforceFormat: Transformer = {
   match: ({ config }) => config.enforceFormat,
-  transform: async ({ sourceFile, config: { format } }) => {
-    sourceFile.formatText(format)
+  transform: async ({ sourceFile, config }) => {
     enforeLineSeparation(sourceFile, (cur, prev) => (prev instanceof ImportDeclaration && cur instanceof ImportDeclaration)
       ? SeparationIntent.COMBINE
       : SeparationIntent.SEPARATE
     )
-    sourceFile.organizeImports(format)
+    sourceFile.organizeImports()
+    sourceFile.formatText(config.format)
   }
 }

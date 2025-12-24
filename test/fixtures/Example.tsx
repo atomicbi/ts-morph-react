@@ -5,23 +5,22 @@ import * as React from 'react'
 import { cn } from '@/lib/utils'
 
 import { Button as ButtonPrimitive } from '@base-ui/react/button'
-interface ExampleContextProps {
-  content: string
-}
 
-const ExampleContext = React.createContext<ExampleContextProps | null>(null)
-
-function ExampleProvider({ value, ...props }: React.PropsWithChildren<{ value: ExampleContextProps }>) {
+function ExampleProvider({
+  ...props
+}: {
+  children?: React.ReactNode
+}) {
   return (
-    <ExampleContext.Provider value={value} >
+    <div>
       {props.children}
-    </ExampleContext.Provider>
+    </div>
   )
 }
 
 function Example({ content, className, ...props }: ButtonPrimitive.Props & { content: string }) {
   return (
-    <ExampleProvider value={{ content }}>
+    <ExampleProvider>
       <ButtonPrimitive className={cn('p-2', className)} {...props} />
     </ExampleProvider>
   )
